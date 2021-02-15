@@ -9,19 +9,19 @@ const{
     sendRoomData
 } = require('./historical_data_functions')
 
-const task = new Task('simple task',() =>{
+const task = new Task('simple task', async () =>{
     //*******use promise chains
     //perform actions
-    let buildingData = getCurrentBuildingData()
-    let roomData = getCurrentRoomData()
+    let buildingData = await getCurrentBuildingData()
+    let roomData = await getCurrentRoomData()
 
-    let buildingData = processBuildingData(buildingData)
-    let roomData = processRoomData(roomData)
+    buildingData = processBuildingData(buildingData)
+    roomData = processRoomData(roomData)
 
-    sendBuildingData(buildingData)
-    sendRoomData(roomData)
+    let postBuildingsResult = await sendBuildingData(buildingData)
+    let postRoomResult = await sendRoomData(roomData)
 })
-const job = new SimpleIntervalJob({seconds:10},task)
+const job = new SimpleIntervalJob({hours:1},task)
 
 historical_data_service_object.addSimpleIntervalJob(job)
 

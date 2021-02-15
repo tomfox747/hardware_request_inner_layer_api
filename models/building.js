@@ -1,8 +1,8 @@
 const db = require('../db/init')
+const mongoose = require('mongoose')
+const connection = db;
 
-const { model, Schema } = db;
-
-const buildingSchema = new Schema({
+const buildingSchema = new mongoose.Schema({
     Id:{type:String, required:true},
     CountryCode: { type: String, required: true },
     Region: { type: String, required: true },
@@ -14,6 +14,6 @@ const buildingSchema = new Schema({
 
 }, { collection: 'buildings' });
 
-const buildingModel = model('users', buildingSchema);
+const buildingModel = connection.model('users', buildingSchema);
 
 module.exports = buildingModel;
