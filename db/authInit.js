@@ -1,8 +1,8 @@
 const init = require('./connection')
-//create config file env for connection string
+
 const connectionString = "mongodb+srv://super:supertom@currentdata.ftroe.mongodb.net/authentication?retryWrites=true&w=majority"
-const dbName = "authentication"
+const databaseName = "authentication"
 
-const dbManager = init(connectionString, dbName)
+const dbManager = init(connectionString, databaseName)
 
-module.exports = dbManager
+module.exports = dbManager;
