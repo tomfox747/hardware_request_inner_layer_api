@@ -43,6 +43,7 @@ const Increment_room_population = async(buildingId, roomId) =>{
         await buildingModel.updateOne({Id:buildingId},building)
         return {status:200, data:'increment successful'};
     }catch(e){
+        console.log(e);
         return getError(e,e.code,fileName,'increment_room_population')
     } 
 }

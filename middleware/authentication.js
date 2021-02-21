@@ -10,8 +10,8 @@ const authenticateOrigin = async (req,res,next) =>{
         console.log("request authorised")
         next()
     }else{
-        console.log("request unauthorised")
-        res.send("request unauthorised")
+        console.log("request unauthorised from origin : " + ip)
+        res.send("request unauthorised from origin : " + ip)
     }
 }
 
